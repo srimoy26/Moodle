@@ -318,47 +318,46 @@ class UserTopicsDisplay {
         $weakSectionId = intval($DB->get_field('recommended_topics', 'weak_section_id', ['user_id' => $USER->id, 'weak_section_id' => reset($weakTopics)->weak_section_id]));
       
         $activeTab = isset($_GET['tab']) ? $_GET['tab'] : 'weakTopics';
-   var_dump($weakSectionId);
+ 
        
         $js_function = <<<JS
 <script>
-function handleWeakButtonClick() {
-    const weakButton = document.getElementById("weakButton");
-    const allButton = document.getElementById('allButton');
-    
-    weakButton.style.color = "blue";
-    weakButton.style.border = "2px solid blue";
-    allButton.style.color = "#4f5e71";
-    allButton.style.border = "none";
-    var weakSectionId = '$weakSectionId';
-    
-   
-    window.location.href = `http://moodle.test/course/view.php?id=2&section=${weakSectionId}`;
-    
-}
+document.addEventListener("DOMContentLoaded", function() {
 
-function handleAllButtonClick() {
     const weakButton = document.getElementById("weakButton");
-    const allButton = document.getElementById('allButton');
+    const allButton = document.getElementById("allButton");
 
-    weakButton.style.color = "#4f5e71";
-    weakButton.style.border = "none";
-    allButton.style.color = "blue";
-    allButton.style.border = "2px solid blue";
-    
-    // Prevent the default behavior of the button (page refresh)
-    event.preventDefault();
-    
-    // Your redirection logic
-    window.location.href = "http://moodle.test/course/view.php?id=2";
+    // Check if the current URL matches the desired URL
     var currentUrl = window.location.href;
-if (currentUrl === "http://moodle.test/course/view.php?id=2") {
+    if (currentUrl === "http://moodle.test/course/view.php?id=2") {
         // Adjust button styles accordingly
         weakButton.style.border = "none";
-        allButton.style.border = "2px solid blue";}
-    
-}
+        allButton.style.border = "2px solid blue";
+        weakButton.style.color = "#4f5e71";
+        allButton.style.color = "blue";
+    }
 
+    // Add click event listeners to the buttons
+    weakButton.addEventListener("click", function() {
+        // Update button styles and perform actions for weakButton click
+        weakButton.style.color = "blue";
+        weakButton.style.border = "2px solid blue";
+        allButton.style.color = "#4f5e71";
+        allButton.style.border = "none";
+        var weakSectionId = '$weakSectionId';
+        window.location.href = `http://moodle.test/course/view.php?id=2&section=${weakSectionId}`;
+    });
+
+    allButton.addEventListener("click", function() {
+        // Update button styles and perform actions for allButton click
+        weakButton.style.color = "#4f5e71";
+        weakButton.style.border = "none";
+        allButton.style.color = "blue";
+        allButton.style.border = "2px solid blue";
+        event.preventDefault(); // Prevent default action
+        window.location.href = "http://moodle.test/course/view.php?id=2";
+    });
+});
 
 
 </script>
@@ -366,7 +365,7 @@ JS;
 
 echo $js_function;
         echo'<h5 id=$weakTopics>Select Topics</h5>';
-        echo '<div class="button-container" style="width: 342px; display: inline-block; border-radius: 20px; overflow: hidden; border: 1px solid #bac7d5; background: white;">';
+        echo '<div class="button-container" style="width: 342px; display: inline-block; border-radius: 20px; overflow: hidden; border: 1px solid #084478; background: white;">';
 
         echo '<button id="weakButton" class="filterButton" style="width: 169px; padding: 10px 20px; font-size: 14px; cursor: pointer; border: 2px solid blue; margin: 0; color: blue; font-weight: 600; font-family: Poppins; background-color: white; border-radius: 20px 20px 20px 20px;" onclick="handleWeakButtonClick()">Weak Topics</button>';
         echo '<button id="allButton" class="filterButton" style="width: 169px; padding: 10px 20px; font-size: 14px; cursor: pointer; border: none; margin: 0; color: #4f5e71; font-weight: 600; font-family: Poppins; background-color: white; border-radius: 20px 20px 20px 20px;" onclick="handleAllButtonClick()">All Topics</button>';

@@ -55,7 +55,7 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
-
+$showitem=false;
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -72,6 +72,7 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'overflow' => $overflow,
     'addblockbutton' => $addblockbutton,
+    'showitem'=>$showitem
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);

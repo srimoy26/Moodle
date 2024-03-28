@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students Progress</title>
+    <link rel="icon" type="image/png" href="benesse.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .custom-dropdown {
+        display: inline-block;
+        position: relative;
+        margin-left: 1rem;
+      }
+
+      .custom-dropdown select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 250px;
+        padding: 12px;
+        border: 2px solid #0f47ad !important;
+        border-radius: 8px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .custom-dropdown select:hover {
+        background-color: #e0e0e0;
+      }
+
+      .custom-dropdown select:focus {
+        outline: none;
+        border-color: #0f47ad !important;
+      }
+
+      .custom-dropdown::after {
+        content: "\25BC";
+        position: absolute;
+        top: calc(50% - 8px);
+        right: 10px;
+        color: #555;
+        pointer-events: none;
+      }
+
+      .custom-label {
+        margin-right: 10px;
+        font-weight: 400;
+        color: #666;
+      }
+
+      .form-container {
+        display: flex;
+        align-items: center;
+        margin-left: 10rem;
+        font-size: 18px;
+      }
+
+      .pagination-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 48px;
+      }
+
+      .pagination-container button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0f47ad;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 0 5px;
+      }
+
+      .pagination-container button:hover {
+        background-color: #45a049;
+      }
+
+      #currentPageDisplay {
+        font-size: 18px;
+        margin: 0 10px;
+      }
+
+      .navbar {
+        width: 1440px;
+        height: 64px;
+        display: flex;
+        gap: 60rem;
+        align-items: center;
+
+        margin-top: 0;
+        background-color: #0f47ad !important; 
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar ul li {
+        float: left;
+      }
+
+      .navbar ul li a {
+        display: block;
+        color: #fff; 
+        text-align: center;
+        padding: 20px;
+        text-decoration: none;
+      }
+
+      .navbar ul li a:hover {
+        background-color: #555; 
+      }
+      .user-profile {
+        display: flex;
+        align-items: center;
+      }
+
+      .user-profile h4 {
+        margin: 0; 
+        color: #fff; 
+        margin-right: 10px; 
+      }
+
+      .user-profile img {
+        width: 32px; 
+        height: 32px; 
+        border-radius: 50%; 
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="custom-dropdown">
+        <select name="Sections" id="selected-assessment">
+          <option value="All Assessments">All Assessments</option>
+          <option value="Assessment Year 2023-24 1st cycle">Assessment Year 2023-24 1st cycle</option>
+          <option value="Assessment Year 2023-24 2nd cycle">Assessment Year 2023-24 2nd cycle</option>
+          <option value="Assessment Year 2022-23 1st cycle">Assessment Year 2022-23 1st cycle </option>
+          <option value="Assessment Year 2022-23 2nd cycle">Assessment Year 2022-23 2nd cycle</option>
+
+
+        </select>
+      </div>
+      <div class="user-profile">
+        <h4 style="color: rgb(237, 237, 237)">Srimoy ranjan Das</h4>
+        <img src="profile-icon.png" alt="Profile Icon" />
+      </div>
+    </nav>
+    <div
+      class="table-container"
+      style="
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+      "
+    >
+      <div
+        class="tag"
+        style="
+          margin-left: 10rem;
+          margin-bottom: 2rem;
+          margin-top: 5rem;
+          font-family: 'DM Sans';
+        "
+      >
+        <h1 style="color: #0f47ad">Let’s get started!<br /></h1>
+        <p style="color: #969696">
+          Checking the status of students’s workbook answers
+        </p>
+      </div>
+
+      <form class="form-container">
+        <label
+          class="custom-label"
+          for="Sections"
+          style="margin-right: 10px; font-weight: 500; color: black"
+          >You are viewing</label
+        >
+        <div class="custom-dropdown">
+          <select name="Sections" id="Sections">
+            <option value="All Sections">All Sections</option>
+            <option value="A">Section A</option>
+            <option value="B">Section B</option>
+            <option value="C">Section C</option>
+            <option value="D">Section D</option>
+          </select>
+        </div>
+
+        <label
+          class="custom-label"
+          for="section"
+          style="margin-left: 10px; font-weight: 500; color: black"
+          >including 10 students for</label
+        >
+        <div class="custom-dropdown">
+          <select name="section" id="subsection">
+            <option value="All Subjects">All Subjects</option>
+            <option value="MATH">Math</option>
+            <option value="Science">Science</option>
+            <option value="ENGLISH">English</option>
+          </select>
+        </div>
+
+        <label
+          class="custom-label"
+          style="margin-left: 10px; font-weight: 500; color: black"
+          >students workbook answers:</label
+        >
+      </form>
+
+      <div
+        style="
+          display: flex;
+          gap: 2rem;
+          align-items: center;
+          flex-direction: column;
+          color: #455360;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            display: table-cell;
+            padding: 20px;
+            width: 1090px;
+            height: 59px;
+          "
+        >
+          <div
+            class="card-head"
+            style="
+              background-color: #fbfcff;
+              border-radius: 8px;
+              padding: 20px;
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-around;
+              gap: 8rem;
+            "
+          >
+            <div class="card-header" style="width: 25%">Section</div>
+            <div class="card-header" style="width: 25%">Roll no</div>
+            <div class="card-header" style="width: 25%">Name</div>
+            <div class="card-header" style="width: 25%">WeakTopic</div>
+            <div class="card-header" style="width: 25%; text-align: center">
+              Progress WeakTopic
+            </div>
+            <div class="card-header" style="width: 25%; text-align: center">
+              Progress<br />Overall
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="table-row"
+          style="
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: #455360;
+            gap: 2rem;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="pagination-container">
+      <button id="prevPageBtn">Previous</button>
+      <span id="currentPageDisplay">Page 1</span>
+      <button id="nextPageBtn">Next</button>
+    </div>
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>About Moodle</h4>
+            <p>
+              Moodle is a learning platform designed to provide educators,
+              administrators, and learners with a single robust, secure, and
+              integrated system to create personalized learning environments.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Courses</a></li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>Email: school.support@india.benesse.com</li>
+              <li>Phone: +91(11)66544924</li>
+              <li>
+                <address>
+                  Address: Level 5, Caddie Commercial Tower, Hospitality
+                  District, Aerocity, IGI Airport, New Delhi-110037, India
+                </address>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p>
+                &copy; 2024 Benesse India Private Limited. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="teachertable.js"></script>
+  </body>
+</html>

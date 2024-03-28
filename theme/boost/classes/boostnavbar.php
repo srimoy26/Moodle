@@ -35,6 +35,7 @@ class boostnavbar implements \renderable {
     protected $items = [];
     /** @var moodle_page The current moodle page. */
     protected $page;
+    
 
     /**
      * Takes a navbar object and picks the necessary parts for display.
@@ -53,7 +54,10 @@ class boostnavbar implements \renderable {
      * Prepares the navigation nodes for use with boost.
      */
     protected function prepare_nodes_for_boost(): void {
-        global $PAGE;
+        global $PAGE,$USER,$DB;
+ 
+
+        
 
         // Remove the navbar nodes that already exist in the primary navigation menu.
         $this->remove_items_that_exist_in_navigation($PAGE->primarynav);
@@ -338,5 +342,7 @@ class boostnavbar implements \renderable {
             }
         }
         return [$text, $action];
+
+       
     }
 }

@@ -1,0 +1,284 @@
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tag styles */
+/* .tag {
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+        color: #969696;
+        text-align: center;
+    } */
+
+/* Form container */
+/* .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 1rem; 
+        font-size: 18px;
+    } */
+
+
+.custom-label {
+  margin-right: 10px;
+  font-weight: 500;
+  color: black;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-dropdown select:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-dropdown select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.custom-dropdown::after {
+  content: "\25BC";
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 10px;
+  color: #555;
+  pointer-events: none;
+}
+
+
+.table-container {
+  width: 100%;
+  padding: 20px;
+}
+
+
+.table-head {
+  display: none; 
+}
+
+.table-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  color: #455360;
+  font-size: 14px;
+}
+
+.card-header {
+  width: 100%;
+  text-align: center;
+}
+
+/* CSS for disabled buttons */
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tag styles */
+/* .tag {
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+        color: #969696;
+        text-align: center;
+    } */
+
+/* Form container */
+/* .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 1rem; 
+        font-size: 18px;
+    } */
+
+.custom-label {
+  margin-right: 10px;
+  font-weight: 500;
+  color: black;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-dropdown select:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-dropdown select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.custom-dropdown::after {
+  content: "\25BC";
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 10px;
+  color: #555;
+  pointer-events: none;
+}
+
+/* Table container */
+.table-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.table-head {
+  display: none;
+}
+
+.table-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  color: #455360;
+  font-size: 14px;
+}
+
+.card-header {
+  width: 100%;
+  text-align: center;
+}
+
+.disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  background-color: #455360;
+}
+
+button:not(.disabled) {
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #0f47ad;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  color: #ccc;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  background-color: #222;
+  padding: 10px 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  text-align: center;
+  color: #ccc;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.row {
+  /* margin: 0 -10px; */
+}
+
+.col-md-3 {
+  width: 25%;
+  float: left;
+  padding: 0 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .col-md-3 {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form-container {
+    gap: 2rem;
+  }
+  .custom-label {
+    display: none;
+  }
+
+  .custom-dropdown select {
+    width: calc(100% - 24px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form-container {
+    gap: 2rem;
+  }
+  .custom-label {
+    display: none;
+  }
+
+  .custom-dropdown select {
+    width: calc(100% - 24px);
+  }
+}

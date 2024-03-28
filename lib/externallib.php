@@ -349,6 +349,7 @@ class external_api {
                     if ($subdesc->required == VALUE_REQUIRED) {
                         throw new invalid_parameter_exception('Missing required key in single structure: '. $key);
                     }
+                    
                     if ($subdesc->required == VALUE_DEFAULT) {
                         try {
                             $result[$key] = static::validate_parameters($subdesc, $subdesc->default);
