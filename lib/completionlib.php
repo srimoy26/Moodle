@@ -1369,10 +1369,14 @@ class completion_info {
         $modinfo = get_fast_modinfo($this->course);
         $result = array();
         foreach ($modinfo->get_cms() as $cm) {
+            // var_export($cm);
+            // die;
             if ($cm->completion != COMPLETION_TRACKING_NONE && !$cm->deletioninprogress) {
                 $result[$cm->id] = $cm;
             }
         }
+     
+
         return $result;
     }
 

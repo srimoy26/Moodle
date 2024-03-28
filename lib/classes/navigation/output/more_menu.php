@@ -59,9 +59,13 @@ class more_menu implements renderable, templatable {
      * @return array Data for rendering a template
      */
     public function export_for_template(renderer_base $output): array {
+        global $PAGE,$USER,$DB;
+        
+      
         $data = [
             'navbarstyle' => $this->navbarstyle,
             'istablist' => $this->istablist,
+          
         ];
         if ($this->haschildren) {
             // The node collection doesn't have anything to render so exit now.

@@ -98,7 +98,26 @@ class primary implements renderable, templatable {
      * @return array
      */
     protected function get_custom_menu(renderer_base $output): array {
-        global $CFG;
+        global $CFG ,$DB,$USER;
+        $userid = $USER->id;
+        $sql = "SELECT * FROM {role} AS er 
+                JOIN {role_assignments} AS era ON era.roleid = er.id 
+                WHERE era.userid = ?";
+        $params = array($userid);
+        $rec = $DB->get_record_sql($sql, $params);
+        $showitem;
+    //     var_dump($rec
+    // );
+    //     die;
+       
+        if ( $rec->shortname === 'editingteacher') {
+            $showitem = true;
+        } else {
+            $showitem =false;
+        }
+
+        if(isloggedin() && $showitem){
+        $CFG->custommenuitems="Check student progress| /local/custompage/teachertable.php";}
 
         // Early return if a custom menu does not exists.
         if (empty($CFG->custommenuitems)) {

@@ -178,22 +178,53 @@ class section implements named_templatable, renderable {
     
         $format = $this->format;
         $course = $format->get_course();
+        
         $section = $this->section;
-        $strong = "Your strong topic.";
-        $weak = "Your weak topic.";
+        // var_dump($section);
+        // die;
+        $strong = "Strong topic";
+        $weak = "Weak topic";
     
-      
+        $weakTopics = $DB->get_records_sql(
+            "SELECT weak_section_id FROM {recommended_topics} WHERE user_id = :user_id",
+            ['user_id' => $USER->id]
+        );
+    
+        $isStrongTopic = false;
+        $strongTopics = $DB->get_records_sql(
+            "SELECT strong_section_id FROM {recommended_topics} WHERE user_id = :user_id",
+            ['user_id' => $USER->id]
+        );
         
+
+        $isWeakTopic = false;
+    
+        // Retrieve the section value from course_sections table
+        $user_section = $DB->get_field('course_sections', 'section', ['course' => $course->id, 'id' => $section->id]);
+    
+        // Check if $weakTopics matches $user_section
+        foreach ($weakTopics as $weakTopic) {
+            if ($weakTopic->weak_section_id == $user_section) {
+                $isWeakTopic = true;
+                break;
+            }
+        }
+        // Check if $strongTopics matches $user_section
+        foreach ($strongTopics as $strongTopic) {
+            if ($strongTopic->strong_section_id == $user_section) {
+                $isStrongTopic = true;
+                break;
+            }
+        }
         
 
-
-
-        // Query the mdl_recommended_topics table to check if the current section is a strong or weak topic
-        $isStrongTopic = $DB->record_exists('recommended_topics', ['user_id' => $USER->id, 'strong_section_id' => $section->id]);
-        $isWeakTopic = $DB->record_exists('recommended_topics', ['user_id' => $USER->id, 'weak_section_id' => $section->id]);
-        $allTopics = $DB->get_records('recommended_topics', ['user_id' => $USER->id]);
+        // $isStrongTopic = $DB->record_exists('recommended_topics', ['user_id' => $USER->id, 'strong_section_id' => $section->id]);
+        // $isWeakTopic = $DB->record_exists('recommended_topics', ['user_id' => $USER->id, 'weak_section_id' => $section->id]);
+        // $allTopics = $DB->get_records('recommended_topics', ['user_id' => $USER->id]);
         $summary = new $this->summaryclass($format, $section);
-        // $isWeakTopic = ($section->id == 5);
+        // $user_section = $DB->get_field('course_sections', 'section', ['course' => $course->id, 'id' => $section->id]);
+
+       
         $data = (object)[
             'num' => $section->section ?? '0',
             'id' => $section->id,
@@ -207,6 +238,7 @@ class section implements named_templatable, renderable {
             'isStrongTopic' => $isStrongTopic,
             'isWeakTopic' => $isWeakTopic,
             'allTopics' =>  $allTopics,
+            'user_section' => $user_section,
            
             'editing' => $PAGE->user_is_editing(),
         ];

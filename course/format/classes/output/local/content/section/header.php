@@ -70,6 +70,7 @@ class header implements named_templatable, renderable {
         $format = $this->format;
         $section = $this->section;
         $course = $format->get_course();
+      
 
         $data = (object)[
             'num' => $section->section,

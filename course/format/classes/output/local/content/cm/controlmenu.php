@@ -95,6 +95,7 @@ class controlmenu implements named_templatable, renderable {
             'menu' => $menu->export_for_template($output),
             'hasmenu' => true,
             'id' => $mod->id,
+            
         ];
 
         // After icons.
@@ -119,7 +120,7 @@ class controlmenu implements named_templatable, renderable {
         }
 
         $mod = $this->mod;
-
+        
         $controls = $this->cm_control_items();
 
         if (empty($controls)) {
